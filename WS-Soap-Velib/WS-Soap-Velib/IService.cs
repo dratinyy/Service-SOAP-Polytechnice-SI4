@@ -53,6 +53,11 @@ namespace WS_Soap_Velib
             get { return country_code; }
             set { country_code = value; }
         }
+
+        public override string ToString()
+        {
+            return name + " [" + country_code + "]";
+        }
     }
 
     [DataContract]

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Net;
 
@@ -7,6 +8,8 @@ namespace WS_Soap_Velib
 {
     public class Service : IService
     {
+
+        private Cache cache = new Cache();
 
         /// <summary>
         /// Appelle le Web Service de JCDecaux pour récupérer toutes les villes disponibles, avec la requête :
@@ -58,6 +61,16 @@ namespace WS_Soap_Velib
             reader.Close();
             response.Close();
             return JsonConvert.DeserializeObject<Composite_StationVelib>(responseFromServer);
+        }
+
+        internal class Cache
+        {
+            private DataTable table;
+
+            public Cache()
+            {
+
+            }
         }
     }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/WS_Soap_Velib/Service/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfComposite_City">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Composite_City" nillable="true" type="tns:Composite_City" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComposite_City" nillable="true" type="tns:ArrayOfComposite_City" />
+  <xs:complexType name="Composite_City">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Cities" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Commercial_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Composite_City" nillable="true" type="tns:Composite_City" />
+  <xs:complexType name="ArrayOfComposite_StationVelib">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Composite_StationVelib" nillable="true" type="tns:Composite_StationVelib" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComposite_StationVelib" nillable="true" type="tns:ArrayOfComposite_StationVelib" />
+  <xs:complexType name="Composite_StationVelib">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Available_bike_stands" type="xs:int" />
+      <xs:element minOccurs="0" name="Available_bikes" type="xs:int" />
+      <xs:element minOccurs="0" name="Banking" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Bike_stands" type="xs:int" />
+      <xs:element minOccurs="0" name="Bonus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Contract_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Last_update" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Number" type="xs:int" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:Position" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Composite_StationVelib" nillable="true" type="tns:Composite_StationVelib" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lat" type="xs:double" />
+      <xs:element minOccurs="0" name="Lng" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
+</xs:schema>
