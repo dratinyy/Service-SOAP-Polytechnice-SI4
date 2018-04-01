@@ -4,10 +4,9 @@ using System.ServiceModel;
 
 namespace WS_Soap_Velib
 {
-    // API KEY ed75cd6d6bb24bd1427faf27eeeea43b6dd4a5b6
 
     [ServiceContract]
-    public interface IService
+    public interface IServiceVelib
     {
         [OperationContract]
         List<Composite_City> GetContracts();

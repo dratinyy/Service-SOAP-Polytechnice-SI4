@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Kauffmann_Client_Vélib());
+            Application.Run(new Kauffmann_Client_Admin_Vélib());
         }
     }
 }

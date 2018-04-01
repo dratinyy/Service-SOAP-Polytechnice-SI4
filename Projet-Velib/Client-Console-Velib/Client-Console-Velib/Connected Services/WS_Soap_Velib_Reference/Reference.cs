@@ -389,52 +389,52 @@ namespace Client_Console_Velib.WS_Soap_Velib_Reference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS_Soap_Velib_Reference.IService")]
-    public interface IService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS_Soap_Velib_Reference.IServiceVelib")]
+    public interface IServiceVelib {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetContracts", ReplyAction="http://tempuri.org/IService/GetContractsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetContracts", ReplyAction="http://tempuri.org/IServiceVelib/GetContractsResponse")]
         Client_Console_Velib.WS_Soap_Velib_Reference.Composite_City[] GetContracts();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetContracts", ReplyAction="http://tempuri.org/IService/GetContractsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetContracts", ReplyAction="http://tempuri.org/IServiceVelib/GetContractsResponse")]
         System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_City[]> GetContractsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllInformationForContract", ReplyAction="http://tempuri.org/IService/GetAllInformationForContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetAllInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetAllInformationForContractResponse")]
         Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[] GetAllInformationForContract(string contract);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllInformationForContract", ReplyAction="http://tempuri.org/IService/GetAllInformationForContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetAllInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetAllInformationForContractResponse")]
         System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[]> GetAllInformationForContractAsync(string contract);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStationInformationForContract", ReplyAction="http://tempuri.org/IService/GetStationInformationForContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetStationInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetStationInformationForContractResponse")]
         Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib GetStationInformationForContract(string contract, int station_id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetStationInformationForContract", ReplyAction="http://tempuri.org/IService/GetStationInformationForContractResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetStationInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetStationInformationForContractResponse")]
         System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib> GetStationInformationForContractAsync(string contract, int station_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : Client_Console_Velib.WS_Soap_Velib_Reference.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceVelibChannel : Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<Client_Console_Velib.WS_Soap_Velib_Reference.IService>, Client_Console_Velib.WS_Soap_Velib_Reference.IService {
+    public partial class ServiceVelibClient : System.ServiceModel.ClientBase<Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib>, Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib {
         
-        public ServiceClient() {
+        public ServiceVelibClient() {
         }
         
-        public ServiceClient(string endpointConfigurationName) : 
+        public ServiceVelibClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public ServiceVelibClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ServiceVelibClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ServiceVelibClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
