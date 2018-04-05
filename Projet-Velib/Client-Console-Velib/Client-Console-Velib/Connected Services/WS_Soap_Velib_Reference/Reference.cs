@@ -389,7 +389,7 @@ namespace Client_Console_Velib.WS_Soap_Velib_Reference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS_Soap_Velib_Reference.IServiceVelib")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WS_Soap_Velib_Reference.IServiceVelib", CallbackContract=typeof(Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelibCallback))]
     public interface IServiceVelib {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetContracts", ReplyAction="http://tempuri.org/IServiceVelib/GetContractsResponse")]
@@ -399,16 +399,60 @@ namespace Client_Console_Velib.WS_Soap_Velib_Reference {
         System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_City[]> GetContractsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetAllInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetAllInformationForContractResponse")]
-        Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[] GetAllInformationForContract(string contract);
+        void GetAllInformationForContract(string contract);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetAllInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetAllInformationForContractResponse")]
-        System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[]> GetAllInformationForContractAsync(string contract);
+        System.Threading.Tasks.Task GetAllInformationForContractAsync(string contract);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractEventResponse")]
+        void SubscribeAllInfoForContractEvent();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractEventResponse")]
+        System.Threading.Tasks.Task SubscribeAllInfoForContractEventAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractFinishedEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractFinishedEventResponse" +
+            "")]
+        void SubscribeAllInfoForContractFinishedEvent();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractFinishedEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeAllInfoForContractFinishedEventResponse" +
+            "")]
+        System.Threading.Tasks.Task SubscribeAllInfoForContractFinishedEventAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetStationInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetStationInformationForContractResponse")]
-        Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib GetStationInformationForContract(string contract, int station_id);
+        void GetStationInformationForContract(string contract, int station_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/GetStationInformationForContract", ReplyAction="http://tempuri.org/IServiceVelib/GetStationInformationForContractResponse")]
-        System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib> GetStationInformationForContractAsync(string contract, int station_id);
+        System.Threading.Tasks.Task GetStationInformationForContractAsync(string contract, int station_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractEventResponse")]
+        void SubscribeStationInfoForContractEvent();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractEventResponse")]
+        System.Threading.Tasks.Task SubscribeStationInfoForContractEventAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractFinishedEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractFinishedEventResp" +
+            "onse")]
+        void SubscribeStationInfoForContractFinishedEvent();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractFinishedEvent", ReplyAction="http://tempuri.org/IServiceVelib/SubscribeStationInfoForContractFinishedEventResp" +
+            "onse")]
+        System.Threading.Tasks.Task SubscribeStationInfoForContractFinishedEventAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServiceVelibCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceVelib/CityStationListQuery")]
+        void CityStationListQuery(string contract, Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[] stationlist);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceVelib/CityStationListQueryFinished")]
+        void CityStationListQueryFinished();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceVelib/StationQuery")]
+        void StationQuery(string contract, int station_id, Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib station);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceVelib/StationQueryFinished")]
+        void StationQueryFinished();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -417,25 +461,26 @@ namespace Client_Console_Velib.WS_Soap_Velib_Reference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceVelibClient : System.ServiceModel.ClientBase<Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib>, Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib {
+    public partial class ServiceVelibClient : System.ServiceModel.DuplexClientBase<Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib>, Client_Console_Velib.WS_Soap_Velib_Reference.IServiceVelib {
         
-        public ServiceVelibClient() {
+        public ServiceVelibClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ServiceVelibClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ServiceVelibClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ServiceVelibClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceVelibClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceVelibClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceVelibClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceVelibClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ServiceVelibClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public Client_Console_Velib.WS_Soap_Velib_Reference.Composite_City[] GetContracts() {
@@ -446,20 +491,52 @@ namespace Client_Console_Velib.WS_Soap_Velib_Reference {
             return base.Channel.GetContractsAsync();
         }
         
-        public Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[] GetAllInformationForContract(string contract) {
-            return base.Channel.GetAllInformationForContract(contract);
+        public void GetAllInformationForContract(string contract) {
+            base.Channel.GetAllInformationForContract(contract);
         }
         
-        public System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib[]> GetAllInformationForContractAsync(string contract) {
+        public System.Threading.Tasks.Task GetAllInformationForContractAsync(string contract) {
             return base.Channel.GetAllInformationForContractAsync(contract);
         }
         
-        public Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib GetStationInformationForContract(string contract, int station_id) {
-            return base.Channel.GetStationInformationForContract(contract, station_id);
+        public void SubscribeAllInfoForContractEvent() {
+            base.Channel.SubscribeAllInfoForContractEvent();
         }
         
-        public System.Threading.Tasks.Task<Client_Console_Velib.WS_Soap_Velib_Reference.Composite_StationVelib> GetStationInformationForContractAsync(string contract, int station_id) {
+        public System.Threading.Tasks.Task SubscribeAllInfoForContractEventAsync() {
+            return base.Channel.SubscribeAllInfoForContractEventAsync();
+        }
+        
+        public void SubscribeAllInfoForContractFinishedEvent() {
+            base.Channel.SubscribeAllInfoForContractFinishedEvent();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeAllInfoForContractFinishedEventAsync() {
+            return base.Channel.SubscribeAllInfoForContractFinishedEventAsync();
+        }
+        
+        public void GetStationInformationForContract(string contract, int station_id) {
+            base.Channel.GetStationInformationForContract(contract, station_id);
+        }
+        
+        public System.Threading.Tasks.Task GetStationInformationForContractAsync(string contract, int station_id) {
             return base.Channel.GetStationInformationForContractAsync(contract, station_id);
+        }
+        
+        public void SubscribeStationInfoForContractEvent() {
+            base.Channel.SubscribeStationInfoForContractEvent();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeStationInfoForContractEventAsync() {
+            return base.Channel.SubscribeStationInfoForContractEventAsync();
+        }
+        
+        public void SubscribeStationInfoForContractFinishedEvent() {
+            base.Channel.SubscribeStationInfoForContractFinishedEvent();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeStationInfoForContractFinishedEventAsync() {
+            return base.Channel.SubscribeStationInfoForContractFinishedEventAsync();
         }
     }
 }

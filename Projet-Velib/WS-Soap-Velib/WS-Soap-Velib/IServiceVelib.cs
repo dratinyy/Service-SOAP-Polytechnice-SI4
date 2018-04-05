@@ -4,18 +4,29 @@ using System.ServiceModel;
 
 namespace WS_Soap_Velib
 {
-
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IServiceVelibEvents))]
     public interface IServiceVelib
     {
         [OperationContract]
         List<Composite_City> GetContracts();
 
         [OperationContract]
-        List<Composite_StationVelib> GetAllInformationForContract(string contract);
+        void GetAllInformationForContract(string contract);
 
         [OperationContract]
-        Composite_StationVelib GetStationInformationForContract(string contract, int station_id);
+        void SubscribeAllInfoForContractEvent();
+
+        [OperationContract]
+        void SubscribeAllInfoForContractFinishedEvent();
+
+        [OperationContract]
+        void GetStationInformationForContract(string contract, int station_id);
+
+        [OperationContract]
+        void SubscribeStationInfoForContractEvent();
+
+        [OperationContract]
+        void SubscribeStationInfoForContractFinishedEvent();
     }
 
     [DataContract]

@@ -11,6 +11,69 @@ namespace WS_Soap_Velib
 {
     public class ServiceVelib : IServiceVelib
     {
+        static Action<string, List<Composite_StationVelib>> m_EventStationList = delegate { };
+        static Action m_EventStationListQueryFinished = delegate { };
+        static Action<string, int, Composite_StationVelib> m_EventStation = delegate { };
+        static Action m_EventStationQueryFinished = delegate { };
+
+        public void SubscribeAllInfoForContractEvent()
+        {
+            IServiceVelibEvents subscriber =
+            OperationContext.Current.GetCallbackChannel<IServiceVelibEvents>();
+            m_EventStationList += subscriber.CityStationListQuery;
+        }
+
+        public void SubscribeAllInfoForContractFinishedEvent()
+        {
+            IServiceVelibEvents subscriber =
+            OperationContext.Current.GetCallbackChannel<IServiceVelibEvents>();
+            m_EventStationListQueryFinished += subscriber.CityStationListQueryFinished;
+        }
+
+        public void SubscribeStationInfoForContractEvent()
+        {
+            IServiceVelibEvents subscriber =
+            OperationContext.Current.GetCallbackChannel<IServiceVelibEvents>();
+            m_EventStation += subscriber.StationQuery;
+        }
+
+        public void SubscribeStationInfoForContractFinishedEvent()
+        {
+            IServiceVelibEvents subscriber =
+            OperationContext.Current.GetCallbackChannel<IServiceVelibEvents>();
+            m_EventStationQueryFinished += subscriber.StationQueryFinished;
+        }
+
+        void IServiceVelib.GetAllInformationForContract(string contract)
+        {
+            m_EventStationList(contract, cache.GetDataForContract(contract));
+            m_EventStationListQueryFinished();
+        }
+
+        void IServiceVelib.GetStationInformationForContract(string contract, int station_id)
+        {
+            OperationContext current = OperationContext.Current;
+            MessageProperties prop = current.IncomingMessageProperties;
+            RemoteEndpointMessageProperty endpoint = prop[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+            MonitoringUnit.AddIncomingRequest(DateTime.Now, endpoint.Address);
+            MonitoringUnit.AddOutgoingRequest(DateTime.Now);
+
+            DateTime reqTime = DateTime.Now;
+            WebRequest request = WebRequest.Create("https://api.jcdecaux.com/vls/v1/stations/" + station_id
+                + "?contract=" + contract
+                + "&apiKey=ed75cd6d6bb24bd1427faf27eeeea43b6dd4a5b6");
+            WebResponse response = request.GetResponse();
+            MonitoringUnit.AddJCDecauxResponseTime(reqTime, DateTime.Now);
+
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+
+            m_EventStation(contract, station_id, JsonConvert.DeserializeObject<Composite_StationVelib>(responseFromServer));
+            m_EventStationQueryFinished();
+        }
 
         private Cache cache = new Cache();
 
@@ -45,42 +108,6 @@ namespace WS_Soap_Velib
             reader.Close();
             response.Close();
             return JsonConvert.DeserializeObject<List<Composite_City>>(responseFromServer);
-        }
-
-        /// <summary>
-        /// Appelle le Web Service de JCDecaux pour récupérer toutes les informations des stations d'une ville spécifique, avec la requête :
-        /// https://api.jcdecaux.com/vls/v1/stations?contract={nom_de_la_ville}
-        /// </summary>
-        public List<Composite_StationVelib> GetAllInformationForContract(string contract)
-        {
-            return cache.GetDataForContract(contract);
-        }
-
-        /// <summary>
-        /// Appelle le Web Service de JCDecaux pour récupérer les informations d'une station d'une ville, avec la requête :
-        /// https://api.jcdecaux.com/vls/v1/stations/{id_de_la_station}?contract={nom_de_la_ville}
-        /// </summary>
-        public Composite_StationVelib GetStationInformationForContract(string contract, int station_id)
-        {
-            OperationContext current = OperationContext.Current;
-            MessageProperties prop = current.IncomingMessageProperties;
-            RemoteEndpointMessageProperty endpoint = prop[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
-            MonitoringUnit.AddIncomingRequest(DateTime.Now, endpoint.Address);
-            MonitoringUnit.AddOutgoingRequest(DateTime.Now);
-
-            DateTime reqTime = DateTime.Now;
-            WebRequest request = WebRequest.Create("https://api.jcdecaux.com/vls/v1/stations/" + station_id
-                + "?contract=" + contract
-                + "&apiKey=ed75cd6d6bb24bd1427faf27eeeea43b6dd4a5b6");
-            WebResponse response = request.GetResponse();
-            MonitoringUnit.AddJCDecauxResponseTime(reqTime, DateTime.Now);
-
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
-            reader.Close();
-            response.Close();
-            return JsonConvert.DeserializeObject<Composite_StationVelib>(responseFromServer);
         }
 
         /*

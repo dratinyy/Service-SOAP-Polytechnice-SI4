@@ -22,9 +22,27 @@
   </xs:element>
   <xs:element name="GetAllInformationForContractResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" minOccurs="0" name="GetAllInformationForContractResult" nillable="true" type="q2:ArrayOfComposite_StationVelib" />
-      </xs:sequence>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeAllInfoForContractEvent">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeAllInfoForContractEventResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeAllInfoForContractFinishedEvent">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeAllInfoForContractFinishedEventResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStationInformationForContract">
@@ -37,9 +55,54 @@
   </xs:element>
   <xs:element name="GetStationInformationForContractResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeStationInfoForContractEvent">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeStationInfoForContractEventResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeStationInfoForContractFinishedEvent">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeStationInfoForContractFinishedEventResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CityStationListQuery">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" minOccurs="0" name="GetStationInformationForContractResult" nillable="true" type="q3:Composite_StationVelib" />
+        <xs:element minOccurs="0" name="contract" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" minOccurs="0" name="stationlist" nillable="true" type="q2:ArrayOfComposite_StationVelib" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CityStationListQueryFinished">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationQuery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="contract" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="station_id" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WS_Soap_Velib" minOccurs="0" name="station" nillable="true" type="q3:Composite_StationVelib" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StationQueryFinished">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

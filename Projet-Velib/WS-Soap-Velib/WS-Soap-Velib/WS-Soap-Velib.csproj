@@ -53,6 +53,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="IServiceMonitoring.cs" />
+    <Compile Include="IServiceVelibEvents.cs" />
     <Compile Include="IServiceVelib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceMonitoring.cs" />
